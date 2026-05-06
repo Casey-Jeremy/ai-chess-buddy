@@ -152,7 +152,7 @@ function GameDetailContent({ game, currentUsername }: GameDetailContentProps) {
   // Determine result
   const userResult = userPlayer.result;
   const isWin = userResult === 'win';
-  const isDraw = ['repetition', 'stalemate', 'insufficient', '50move', 'draw'].includes(userResult);
+  const isDraw = ['repetition', 'stalemate', 'insufficient', '50move', 'draw', 'agreed'].includes(userResult);
   
   const resultText = isWin ? 'Victory' : isDraw ? 'Draw' : 'Defeat';
   const resultDetail = formatResultDetail(userResult);
@@ -279,7 +279,7 @@ function GameDetailContent({ game, currentUsername }: GameDetailContentProps) {
 
 function formatResultDetail(result: string): string {
   const mapping: Record<string, string> = {
-    'win': 'Checkmate',
+    'win': 'Victory',
     'checkmated': 'Checkmated',
     'resigned': 'Resignation',
     'timeout': 'Time Out',
@@ -289,8 +289,12 @@ function formatResultDetail(result: string): string {
     'insufficient': 'Insufficient Material',
     '50move': '50-Move Rule',
     'draw': 'Agreement',
+    'agreed': 'Agreement',
+    'kingofthehill': 'King of the Hill',
+    'threecheck': 'Three Check',
+    'timeoff': 'Time Out',
   };
-  return mapping[result] || result.charAt(0).toUpperCase() + result.slice(1);
+  return mapping[result] || result.charAt(0).toUpperCase() + result.slice(1) || 'Unknown';
 }
 
 interface InfoRowProps {

@@ -173,6 +173,35 @@ export class ChessComApiService {
   }
 
   /**
+   * Maps Chess.com API game object to our Game type
+   */
+  private mapGame(apiGame: any): Game {
+    return {
+      url: apiGame.url || '',
+      pgn: apiGame.pgn || '',
+      timeControl: apiGame.time_control || apiGame.timeControl || '',
+      timeClass: apiGame.time_class || apiGame.timeClass || '',
+      rules: apiGame.rules || '',
+      startTime: apiGame.start_time || apiGame.startTime,
+      endTime: apiGame.end_time || apiGame.endTime || 0,
+      rated: apiGame.rated ?? true,
+      fen: apiGame.fen || '',
+      white: {
+        username: apiGame.white?.username || '',
+        rating: apiGame.white?.rating || 0,
+        result: apiGame.white?.result || '',
+      },
+      black: {
+        username: apiGame.black?.username || '',
+        rating: apiGame.black?.rating || 0,
+        result: apiGame.black?.result || '',
+      },
+      opening: apiGame.opening || '',
+      eco: apiGame.eco || '',
+    };
+  }
+
+  /**
    * Fetches all games for a specific month
    * Requirements: 3.2
    */
@@ -180,8 +209,8 @@ export class ChessComApiService {
     // Format month with leading zero (01-12)
     const monthStr = month.toString().padStart(2, '0');
     const url = `${this.baseUrl}/player/${username}/games/${year}/${monthStr}`;
-    const data = await this.apiCall<{ games: Game[] }>(url);
-    return data.games || [];
+    const data = await this.apiCall<{ games: any[] }>(url);
+    return (data.games || []).map(game => this.mapGame(game));
   }
 
   /**
@@ -189,7 +218,10 @@ export class ChessComApiService {
    */
   async getPlayerGames(username: string): Promise<{ games: Game[] }> {
     const url = `${this.baseUrl}/player/${username}/games`;
-    return this.apiCall<{ games: Game[] }>(url);
+    const data = await this.apiCall<{ games: any[] }>(url);
+    return {
+      games: (data.games || []).map(game => this.mapGame(game))
+    };
   }
 
   /**
@@ -197,7 +229,10 @@ export class ChessComApiService {
    */
   async getPlayerGamesToMove(username: string): Promise<{ games: Game[] }> {
     const url = `${this.baseUrl}/player/${username}/games/to-move`;
-    return this.apiCall<{ games: Game[] }>(url);
+    const data = await this.apiCall<{ games: any[] }>(url);
+    return {
+      games: (data.games || []).map(game => this.mapGame(game))
+    };
   }
 
   /**

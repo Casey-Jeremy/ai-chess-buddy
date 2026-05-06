@@ -401,7 +401,8 @@ export class AnalyticsService {
       return isWhite ? game.white.rating : game.black.rating;
     }
 
-    return game.white.rating;
+    // Default to the first player we find
+    return game.white?.rating || game.black?.rating || 0;
   }
 
   private calculateSuccessRate(wins: number, losses: number, draws: number): number {

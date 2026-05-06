@@ -41,7 +41,13 @@ export default function GameListItem({ game, currentUsername, onPress }: GameLis
   const userResult = userColor === 'white' ? game.white.result : game.black.result;
   
   const gameDate = game.endTime 
-    ? new Date(game.endTime * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    ? new Date(game.endTime * 1000).toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      })
     : 'Unknown';
   
   const timeControl = formatTimeControl(game.timeControl);

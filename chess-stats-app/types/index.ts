@@ -50,12 +50,16 @@ export interface Game {
   url: string;
   pgn: string;
   timeControl: string;
+  timeClass: string;
+  rules: string;
+  startTime?: number;
   endTime: number;
   rated: boolean;
+  fen: string;
   white: PlayerGameInfo;
   black: PlayerGameInfo;
-  result?: string;
   opening?: string;
+  eco?: string;
 }
 
 export interface PlayerGameInfo {
