@@ -1,0 +1,53 @@
+# dependencies
+node_modules/
+chess-stats-app/node_modules/
+
+# Expo
+.expo/
+chess-stats-app/.expo/
+dist/
+chess-stats-app/dist/
+web-build/
+chess-stats-app/web-build/
+expo-env.d.ts
+chess-stats-app/expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env
+.env*.local
+chess-stats-app/.env
+chess-stats-app/.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# generated native folders
+/ios
+/android
+/chess-stats-app/ios
+/chess-stats-app/android
+
+# caches
+npm-cache/
+.npm/
