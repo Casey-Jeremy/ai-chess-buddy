@@ -15,7 +15,7 @@ AI Chess Buddy is a modern, premium mobile application built with React Native a
 
 - **Framework**: React Native with Expo (Managed Workflow)
 - **Navigation**: Expo Router (File-based routing)
-- **State Management**: TanStack Query (React Query) for efficient data fetching and caching
+- **State Management**: Tanstack Query (React Query) for efficient data fetching and caching
 - **Styling**: NativeWind (Tailwind CSS for React Native)
 - **Icons**: Expo Vector Icons (MaterialCommunityIcons, Ionicons)
 - **API**: Chess.com Public Data API
@@ -33,7 +33,7 @@ AI Chess Buddy is a modern, premium mobile application built with React Native a
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Casey-Jeremy/ai-chess-buddy.git
+   git clone https://github.com/yourusername/ai-chess-buddy.git
    cd ai-chess-buddy
    ```
 
@@ -58,12 +58,12 @@ AI Chess Buddy is a modern, premium mobile application built with React Native a
 
 ## 📂 Project Structure
 
-- `app/` — Main screens and navigation layouts (Expo Router)
-- `components/` — Reusable UI components (MetricCards, Skeletons, etc.)
-- `hooks/` — Custom React hooks for data fetching and logic
-- `services/` — Core business logic, including API services and performance analytics
-- `contexts/` — React Context providers for Auth and Network state
-- `types/` — TypeScript interfaces and type definitions
+- `app/`: Contains the main screens and navigation layouts (Expo Router).
+- `components/`: Reusable UI components (MetricCards, Skeletons, etc.).
+- `hooks/`: Custom React hooks for data fetching and logic.
+- `services/`: Core business logic, including API services and performance analytics.
+- `contexts/`: React Context providers for Auth and Network state.
+- `types/`: TypeScript interfaces and type definitions.
 
 ## 🤝 Contributing
 
